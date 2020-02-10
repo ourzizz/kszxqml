@@ -1,10 +1,14 @@
 TEMPLATE = app
-
+QT += widgets
 QT += qml quick
+QT += printsupport
+
 CONFIG += c++11
 
 SOURCES += main.cpp \
-    KaoshengListModel.cpp
+    KaoshengListModel.cpp \
+    componentprinter_plugin.cpp \
+    printer.cpp
 
 RESOURCES += qml.qrc
 
@@ -31,4 +35,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    KaoshengListModel.h
+    KaoshengListModel.h \
+    componentprinter_plugin.h \
+    printer.h
+
+DISTFILES +=

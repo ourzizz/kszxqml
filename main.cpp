@@ -1,17 +1,20 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QtQml/QtQml>
+#include <QApplication>
 #include "KaoshengListModel.h"
+#include "componentprinter_plugin.h"
 
 int main(int argc, char *argv[])
 {
-    QGuiApplication app(argc, argv);
-
-    qDebug() << "main,error - " << 1;
+//    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
     qmlRegisterType<KaoshengListModel>("an.qt.KSModel", 1, 0, "KaoshengListModel");
-
+    ComponentPrinterPlugin rs;
+    rs.registerTypes("an.qt.Printer");
+//    qmlRegisterType<KaoshengListModel>("an.qt.Printer", 1, 0, "Printer");
+//    qmlRegisterType<KaoshengListModel>("an.qt.SqlTool", 1, 0, "SqlTool");
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:///main.qml")));
-
     return app.exec();
 }

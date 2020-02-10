@@ -27,13 +27,14 @@ public:
 //        char *element[] ={"车那还","nan","1233332123.png"};
         KaoshengData *ksdata;
         ksdata = new KaoshengData();
-        ksdata->append("chenhai");
+        ksdata->append("陈海");
         ksdata->append("name");
-        ksdata->append("https://bjks-1252192276.cos.ap-chengdu.myqcloud.com/kaosheng/2d079527ad8143b3a34c74e76c903b25-wxa8510d55a9cbdc9c.o6zAJs4k-xTiu0aU33eQS8Ng4sC4.p9ropHDyqJUn4761a680078a7833406f776fa25f4871.jpg");
+        ksdata->append("./acy.jpg");
 //        ksdata->append(element[3]);
 //        ksdata->append(element[4]);
 //        ksdata->append(element[5]);
-        for(int i=0;i<30;i++){
+        for(int i=0;i<28;i++){
+//            ksdata[1] = QString::number(i);
            m_Kaoshengs.append(ksdata);
         }
     }
@@ -112,7 +113,16 @@ void KaoshengListModel::reload()
 
     endResetModel();
 }
-
+void KaoshengListModel::get(int index){
+//    beginResetModel();
+//        KaoshengData *ksdata;
+//        ksdata = new KaoshengData();
+//        ksdata->append("chenhaixxx");
+//        ksdata->append("name");
+//        ksdata->append("https://bjks-1252192276.cos.ap-chengdu.myqcloud.com/kaosheng/2d079527ad8143b3a34c74e76c903b25-wxa8510d55a9cbdc9c.o6zAJs4k-xTiu0aU33eQS8Ng4sC4.p9ropHDyqJUn4761a680078a7833406f776fa25f4871.jpg");
+//     m_dptr->m_Kaoshengs.append(ksdata);
+//    endResetModel();
+}
 bool KaoshengListModel::insertRow()const{
     return false;
 }
