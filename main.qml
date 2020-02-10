@@ -22,7 +22,7 @@ Window{
             id:ksdelegate;
             Rectangle{
                 width:200;
-                height:160;
+                height:120;
                 border.width:1;
                 border.color:"black"
     //            radius: 5
@@ -62,13 +62,13 @@ Window{
     }
     Item{
         width: 1230;
-        height : 700;
+        height : 600;
         GridView{
             id:gridView;
             verticalLayoutDirection : GridView.BottomToTop
             layoutDirection: Qt.RightToLeft
             cellWidth:200;
-            cellHeight:160;
+            cellHeight:120;
             anchors.fill: parent;
             delegate: ksdelegate;
             model: KaoshengListModel{

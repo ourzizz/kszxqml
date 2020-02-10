@@ -1,4 +1,5 @@
 TEMPLATE = app
+QT += sql
 QT += widgets
 QT += qml quick
 QT += printsupport

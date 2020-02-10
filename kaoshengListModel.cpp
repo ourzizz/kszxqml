@@ -1,7 +1,12 @@
+/***********************************
+*打印底板逻辑其实很简单
+*1指定数据库
+*2取数据填充矩阵
+*3打印 周而复始
+************************************/
 #include "KaoshengListModel.h"
 #include <QVector>
 #include <QDebug>
-
 typedef QVector<QString> KaoshengData;
 class KaoshengDataPrivate
 {
@@ -23,19 +28,16 @@ public:
         clear();
     }
 
-    void load(){
-//        char *element[] ={"车那还","nan","1233332123.png"};
+    void load(){//给出考点 考场两个参数 取数据库中对应的数据填充
+        char *element[] ={"车那还","nan","1233332123.png"};
+        qDebug()<<"test"<<element[0];
         KaoshengData *ksdata;
-        ksdata = new KaoshengData();
-        ksdata->append("陈海");
-        ksdata->append("name");
-        ksdata->append("./acy.jpg");
-//        ksdata->append(element[3]);
-//        ksdata->append(element[4]);
-//        ksdata->append(element[5]);
-        for(int i=0;i<28;i++){
-//            ksdata[1] = QString::number(i);
-           m_Kaoshengs.append(ksdata);
+        for(int i=0;i<25;i++){
+            ksdata = new KaoshengData();
+            ksdata->append(element[1]);
+            ksdata->append(QString::number(i));
+            ksdata->append("./acy.jpg");
+            m_Kaoshengs.append(ksdata);
         }
     }
 
