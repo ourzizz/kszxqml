@@ -1,6 +1,7 @@
 #ifndef VIDEOLISTMODEL_H
 #define VIDEOLISTMODEL_H
 #include <QAbstractListModel>
+#include "DataSource.h"
 
 class KaoshengDataPrivate;
 class KaoshengListModel : public QAbstractListModel

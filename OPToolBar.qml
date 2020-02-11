@@ -3,6 +3,7 @@ import QtQuick.Controls 1.2
 import QtQuick.Window 2.2
 import QtQuick.Layouts 1.3
 Item{
+    width: parent.width
     Row{
         x: 8
         y: 8
@@ -11,7 +12,7 @@ Item{
             currentIndex: 0
             model: ListModel {
                 id: cbItems
-                ListElement { text: "毕节一小"; color: "Yellow" }
+                ListElement { text: "毕节小"; color: "Yellow" }
                 ListElement { text: "毕节一中"; color: "Green" }
             }
             width: 162
@@ -54,48 +55,34 @@ Item{
                     printer.print();
             }
         }
-    }
 
-    RowLayout {
-        id: rowLayout
-        x: 328
-        y: 12
-        width: 202
-        height: 35
-        Label {
-            id: label
-            x: 346
-            y: 19
-            text: qsTr("起始考场")
-        }
+        RowLayout {
+            id: rowLayout
+            width: 202
+            height: 35
+            Label {
+                id: label
+                text: qsTr("起始考场")
+            }
 
-        TextField {
-            id: textField
-            x: 403
-            y: 15
-            placeholderText: qsTr("Text Field")
+            TextField {
+                id: textField
+                placeholderText: qsTr("Text Field")
+            }
         }
-    }
-    RowLayout {
-        id: rowLayout2
-        x: 328
-        y: 12
-        width: 202
-        height: 35
-        Label {
-            id: label2
-            x: 346
-            y: 19
-            text: qsTr("起始考场")
-        }
+        RowLayout {
+            id: rowLayout2
+            anchors.left: rowLayout.right
+            Label {
+                id: label2
+                text: qsTr("终止考场-")
+            }
 
-        TextField {
-            id: textFieldend
-            x: 403
-            y: 15
-            placeholderText: qsTr("Text Field")
+            TextField {
+                id: textFieldend
+                placeholderText: qsTr("Text Field")
+            }
         }
     }
-
 }
 

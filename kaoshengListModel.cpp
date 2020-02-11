@@ -7,13 +7,15 @@
 #include "KaoshengListModel.h"
 #include <QVector>
 #include <QDebug>
+#include "DataSource.h"
 typedef QVector<QString> KaoshengData;
 class KaoshengDataPrivate
 {
-public:
+public:/*{{{*/
     KaoshengDataPrivate()
         : m_bError(false)
     {
+        m_db = new DataSource();
         int role = Qt::UserRole;
         m_roleNames.insert(role++, "name");
         m_roleNames.insert(role++, "age");
@@ -60,11 +62,11 @@ public:
             m_Kaoshengs.clear();
         }
     }
-
+    DataSource *m_db;
     QString m_strError;
     bool m_bError;
     QHash<int, QByteArray> m_roleNames;
-    QVector<KaoshengData*> m_Kaoshengs;
+    QVector<KaoshengData*> m_Kaoshengs;/*}}}*/
 };
 
 KaoshengListModel::KaoshengListModel(QObject *parent)
@@ -116,14 +118,17 @@ void KaoshengListModel::reload()
     endResetModel();
 }
 void KaoshengListModel::get(int index){
-//    beginResetModel();
-//        KaoshengData *ksdata;
-//        ksdata = new KaoshengData();
-//        ksdata->append("chenhaixxx");
-//        ksdata->append("name");
-//        ksdata->append("https://bjks-1252192276.cos.ap-chengdu.myqcloud.com/kaosheng/2d079527ad8143b3a34c74e76c903b25-wxa8510d55a9cbdc9c.o6zAJs4k-xTiu0aU33eQS8Ng4sC4.p9ropHDyqJUn4761a680078a7833406f776fa25f4871.jpg");
-//     m_dptr->m_Kaoshengs.append(ksdata);
-//    endResetModel();
+//      QVector<KaoshengData*> *ksdata = m_dptr->m_db->getDiban('毕节市实验学校','01');
+    QString a ="毕节市实验学校";
+    QString b ="01";
+    QVector<KaoshengData*> *ksdata = m_dptr->m_db->getDiban(a,b);
+    beginResetModel();
+    m_dptr->m_Kaoshengs.clear();
+    for(int i=0;i<ksdata->count();i++){
+        m_dptr->m_Kaoshengs.append(ksdata->at(i));
+        qDebug()<<"debug"<<ksdata->at(i)[0];
+    }
+    endResetModel();
 }
 bool KaoshengListModel::insertRow()const{
     return false;

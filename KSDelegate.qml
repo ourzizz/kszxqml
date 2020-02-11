@@ -39,9 +39,10 @@ Component{
               anchors.fill: parent
               onClicked: {
              onClicked: gridView.currentIndex = index;
-             gridView.model.get(gridView.currentIndex)
-               var data = gridView.model.get(gridView.currentIndex)
-               console.log(data.name)
+             console.log("tst")
+             gridView.model.get(index)
+               /*var data = gridView.model.get(gridView.currentIndex)*/
+               console.log(gridView.model[index].name)
           }
         }
     }
