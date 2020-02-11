@@ -97,6 +97,7 @@ Window{
                     width:80;
                     height:100;
                     source:img;
+//                    source:"file:///D:/data/ksphoto/fb.jpg";
                     transformOrigin: Item.BottomRight;
                     anchors.topMargin: 20
                     anchors.leftMargin: 20
@@ -119,7 +120,7 @@ Window{
                  onClicked: gridView.currentIndex = index;
                  console.log("tst")
                  gridView.model.get(index)
-                   /*var data = gridView.model.get(gridView.currentIndex)*/
+                   /*var data = gridView.model.get("02")*/
 //                   console.log(gridView.model[index].name)
               }
             }

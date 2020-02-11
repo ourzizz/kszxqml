@@ -117,11 +117,10 @@ void KaoshengListModel::reload()
 
     endResetModel();
 }
-void KaoshengListModel::get(int index){
-//      QVector<KaoshengData*> *ksdata = m_dptr->m_db->getDiban('毕节市实验学校','01');
+void KaoshengListModel::get(QString index){
     QString a ="毕节市实验学校";
-    QString b ="01";
-    QVector<KaoshengData*> *ksdata = m_dptr->m_db->getDiban(a,b);
+//    QString b ="01";
+    QVector<KaoshengData*> *ksdata = m_dptr->m_db->getDiban(a,index);
     beginResetModel();
     m_dptr->m_Kaoshengs.clear();
     for(int i=0;i<ksdata->count();i++){

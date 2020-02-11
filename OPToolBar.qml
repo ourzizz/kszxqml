@@ -55,34 +55,6 @@ Item{
                     printer.print();
             }
         }
-
-        RowLayout {
-            id: rowLayout
-            width: 202
-            height: 35
-            Label {
-                id: label
-                text: qsTr("起始考场")
-            }
-
-            TextField {
-                id: textField
-                placeholderText: qsTr("Text Field")
-            }
-        }
-        RowLayout {
-            id: rowLayout2
-            anchors.left: rowLayout.right
-            Label {
-                id: label2
-                text: qsTr("终止考场-")
-            }
-
-            TextField {
-                id: textFieldend
-                placeholderText: qsTr("Text Field")
-            }
-        }
     }
 }
 

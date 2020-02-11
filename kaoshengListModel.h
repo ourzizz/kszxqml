@@ -23,7 +23,7 @@ public:
     Q_INVOKABLE bool insertRow() const;
     Q_INVOKABLE void remove(int index);
     Q_INVOKABLE void reload();
-    Q_INVOKABLE void get(int index);
+    Q_INVOKABLE void get(QString index);
 
 private:
     KaoshengDataPrivate *m_dptr;
