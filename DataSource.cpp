@@ -6,8 +6,8 @@
 DataSource::DataSource()
 {
     m_db=QSqlDatabase::addDatabase("QMYSQL");
-//    m_db.setHostName("127.0.0.1");      //连接数据库主机名，这里需要注意（若填的为”127.0.0.1“，出现不能连接，则改为localhost)
-    m_db.setHostName("192.168.1.107");      //连接数据库主机名，这里需要注意（若填的为”127.0.0.1“，出现不能连接，则改为localhost)
+    m_db.setHostName("127.0.0.1");      //连接数据库主机名，这里需要注意（若填的为”127.0.0.1“，出现不能连接，则改为localhost)
+//    m_db.setHostName("192.168.1.107");      //连接数据库主机名，这里需要注意（若填的为”127.0.0.1“，出现不能连接，则改为localhost)
     m_db.setPort(3306);                 //连接数据库端口号，与设置一致
     m_db.setDatabaseName("1909bishi");      //连接数据库名，与设置一致
     m_db.setUserName("root");          //数据库用户名，与设置一致

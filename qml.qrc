@@ -6,5 +6,6 @@
         <file>OPToolBar.qml</file>
         <file>MainForm.ui.qml</file>
         <file>DibanApearence.qml</file>
+        <file>logic.js</file>
     </qresource>
 </RCC>

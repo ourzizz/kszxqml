@@ -39,10 +39,9 @@ Component{
         MouseArea {
               anchors.fill: parent
               onClicked: {
-             onClicked: gridView.currentIndex = index;
-             console.log("tst")
-             gridView.model.get("毕节一中",index)
-               /*var data = gridView.model.get("02")*/
+//                 onClicked: gridView.currentIndex = index;
+                 console.log(index)
+                 gridView.model.get("毕节一中",index)//调用kaoshengModel的get刷新数据
                  console.log(gridView.model[index].name)
           }
         }

@@ -9,12 +9,21 @@ Window{
     color:"#55aa7f"
     id:root;
     property var checklist: new Array
+    Component{
+        id:kaochangCheckBoxTemplate
+        CheckBox {//考场Item的checkBox
+            text: ""
+            onCheckedChanged: {
+//			    gridView.model.get("毕节一中",text)
+            }
+        }
+    }
     KSDelegate{
         id:ksdelegate
     }
-        ToolBar{
-            anchors.top:parent.top
-        }
+    ToolBar{
+        anchors.top:parent.top
+    }
     ColumnLayout{
         width: root.width
         OPToolBar{
@@ -23,35 +32,12 @@ Window{
             anchors.top:parent.top
         }
         RowLayout{
-                GroupBox{
-                    title: qsTr("请选择考场号")
-                    ColumnLayout {
-                          CheckBox {
-                              text: qsTr("01")
-                              onCheckedChanged: {
-                                  gridView.model.get("毕节一中",text)
-                                  root.checklist.push(text)
-                                  console.debug(root.checklist[0])
-                              }
-                          }
-                          CheckBox {
-                              text: qsTr("02")
-                              onCheckedChanged: {
-                                  gridView.model.get("毕节一中",text)
-                                  root.checklist.push(text)
-                                  console.debug(root.checklist[0])
-                              }
-                          }
-                          CheckBox {
-                              text: qsTr("03")
-                              onCheckedChanged: {
-                                  gridView.model.get("毕节一中",text)
-                                  root.checklist.push(text)
-                                  console.debug(root.checklist[0])
-                              }
-                          }
-                    }
+            GroupBox{
+                title: qsTr("请选择考场号")
+                ColumnLayout {
+                    id:kaochangGroupBox
                 }
+            }
             Column{
                 anchors.top:toolbar.bottom
                 anchors.horizontalCenter: parent.horizontalCenter;
@@ -61,7 +47,7 @@ Window{
                     fontSizeMode: Text.Fit; minimumPixelSize: 10; font.pixelSize: 32
                     anchors.horizontalCenter: parent.horizontalCenter;
                     /*anchors.top : parent*/
-                    text:"QML"
+                    text:"**考试**学校底板打印"
                 }
                 Item{
                     width: 1230;
@@ -74,13 +60,9 @@ Window{
                         cellHeight:120;
                         anchors.fill: parent;
                         delegate: ksdelegate;
-                        model: KaoshengListModel{
-                            Component.onCompleted:{
-                                console.log("IN");
-                            }
-                        }
+                        model: KaoshengListModel{}
                         highlight: highlight
-                        highlightFollowsCurrentItem: false
+                        highlightFollowsCurrentItem: true
                         focus: true
                     }
                     Component.onCompleted:{
@@ -110,12 +92,12 @@ Window{
 
         Component.onCompleted: {
             console.log( "Sizes: " );
-//            var sz = printer.paperSizes;
-//            for( var x=0; x < sz.length; x++ )
-//                console.log(' - ' + sz[x]);
+            //            var sz = printer.paperSizes;
+            //            for( var x=0; x < sz.length; x++ )
+            //                console.log(' - ' + sz[x]);
 
             // To use a standard size:
-                    printer.setPageSize( 'Letter / ANSI A' );
+            printer.setPageSize( 'Letter / ANSI A' );
         }
     }
 

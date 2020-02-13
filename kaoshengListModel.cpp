@@ -32,7 +32,7 @@ public:/*{{{*/
 
     void load(){//给出考点 考场两个参数 取数据库中对应的数据填充
         char *element[] ={"车那还","nan","1233332123.png"};
-        qDebug()<<"test"<<element[0];
+//        qDebug()<<"test"<<element[0];
         KaoshengData *ksdata;
         for(int i=0;i<25;i++){
             ksdata = new KaoshengData();
@@ -73,7 +73,7 @@ KaoshengListModel::KaoshengListModel(QObject *parent)
     : QAbstractListModel(parent)
     , m_dptr(new KaoshengDataPrivate)
 {
-    qDebug() << "VideoListModel,error - " << m_dptr->m_strError;
+//    qDebug() << "VideoListModel,error - " << m_dptr->m_strError;
     m_dptr->load();
 }
 
@@ -125,7 +125,7 @@ void KaoshengListModel::get(QString schoolName,QString index){
     m_dptr->m_Kaoshengs.clear();
     for(int i=0;i<ksdata->count();i++){
         m_dptr->m_Kaoshengs.append(ksdata->at(i));
-        qDebug()<<"debug"<<ksdata->at(i)[0];
+//        qDebug()<<"debug"<<ksdata->at(i)[0];
     }
     endResetModel();
 }
