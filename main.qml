@@ -8,48 +8,85 @@ import an.qt.Printer 1.0
 Window{
     color:"#55aa7f"
     id:root;
-    /*KSDelegate{*/
-        /*id:ksdelegate*/
-    /*}*/
-    OPToolBar{
-        id:toolbar
-//        width: root.width
-        width: 500
-        anchors.top:parent.top
+    property var checklist: new Array
+    KSDelegate{
+        id:ksdelegate
     }
-    Column{
-        anchors.top:toolbar.bottom
-        anchors.horizontalCenter: parent.horizontalCenter;
-        height: parent.height
-        Text{
-            id:title
-            fontSizeMode: Text.Fit; minimumPixelSize: 10; font.pixelSize: 32
-            anchors.horizontalCenter: parent.horizontalCenter;
-            /*anchors.top : parent*/
-            text:"QML"
+        ToolBar{
+            anchors.top:parent.top
         }
-        Item{
-            width: 1230;
-            height : 600;
-            GridView{
-                id:gridView;
-                verticalLayoutDirection : GridView.BottomToTop
-                layoutDirection: Qt.RightToLeft
-                cellWidth:200;
-                cellHeight:120;
-                anchors.fill: parent;
-                delegate: ksdelegate;
-                model: KaoshengListModel{
-                    Component.onCompleted:{
-                        console.log("IN");
+    ColumnLayout{
+        width: root.width
+        OPToolBar{
+            id:toolbar
+            width: root.width
+            anchors.top:parent.top
+        }
+        RowLayout{
+                GroupBox{
+                    title: qsTr("请选择考场号")
+                    ColumnLayout {
+                          CheckBox {
+                              text: qsTr("01")
+                              onCheckedChanged: {
+                                  gridView.model.get("毕节一中",text)
+                                  root.checklist.push(text)
+                                  console.debug(root.checklist[0])
+                              }
+                          }
+                          CheckBox {
+                              text: qsTr("02")
+                              onCheckedChanged: {
+                                  gridView.model.get("毕节一中",text)
+                                  root.checklist.push(text)
+                                  console.debug(root.checklist[0])
+                              }
+                          }
+                          CheckBox {
+                              text: qsTr("03")
+                              onCheckedChanged: {
+                                  gridView.model.get("毕节一中",text)
+                                  root.checklist.push(text)
+                                  console.debug(root.checklist[0])
+                              }
+                          }
                     }
                 }
-                highlight: highlight
-                highlightFollowsCurrentItem: false
-                focus: true
-            }
-            Component.onCompleted:{
-                root.showMaximized()
+            Column{
+                anchors.top:toolbar.bottom
+                anchors.horizontalCenter: parent.horizontalCenter;
+                height: parent.height
+                Text{
+                    id:title
+                    fontSizeMode: Text.Fit; minimumPixelSize: 10; font.pixelSize: 32
+                    anchors.horizontalCenter: parent.horizontalCenter;
+                    /*anchors.top : parent*/
+                    text:"QML"
+                }
+                Item{
+                    width: 1230;
+                    height : 600;
+                    GridView{
+                        id:gridView;
+                        verticalLayoutDirection : GridView.BottomToTop
+                        layoutDirection: Qt.RightToLeft
+                        cellWidth:200;
+                        cellHeight:120;
+                        anchors.fill: parent;
+                        delegate: ksdelegate;
+                        model: KaoshengListModel{
+                            Component.onCompleted:{
+                                console.log("IN");
+                            }
+                        }
+                        highlight: highlight
+                        highlightFollowsCurrentItem: false
+                        focus: true
+                    }
+                    Component.onCompleted:{
+                        root.showMaximized()
+                    }
+                }
             }
         }
     }
@@ -82,48 +119,4 @@ Window{
         }
     }
 
-    Component{
-        id:ksdelegate
-        Rectangle{
-            width:200;
-            height:120;
-            border.width:1;
-            border.color:"black"
-              radius: 5
-            Row{
-                topPadding:10;
-                leftPadding:10;
-                Image{
-                    width:80;
-                    height:100;
-                    source:img;
-//                    source:"file:///D:/data/ksphoto/fb.jpg";
-                    transformOrigin: Item.BottomRight;
-                    anchors.topMargin: 20
-                    anchors.leftMargin: 20
-                }
-                ColumnLayout{
-                    spacing: 2;
-                    Row{
-                        Text{ text:"姓名:"; }
-                        Text{ text:name; }
-                    }
-                    Row{
-                        Text{ text:"年龄:"; }
-                        Text{ text:age; }
-                    }
-                }
-            }
-            MouseArea {
-                  anchors.fill: parent
-                  onClicked: {
-                 onClicked: gridView.currentIndex = index;
-                 console.log("tst")
-                 gridView.model.get(index)
-                   /*var data = gridView.model.get("02")*/
-//                   console.log(gridView.model[index].name)
-              }
-            }
-        }
-    }
 }

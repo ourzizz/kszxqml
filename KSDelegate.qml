@@ -6,6 +6,7 @@ import an.qt.KSModel 1.0
 import an.qt.Printer 1.0
 
 Component{
+    id:ksdelegate
     Rectangle{
         width:200;
         height:120;
@@ -40,9 +41,9 @@ Component{
               onClicked: {
              onClicked: gridView.currentIndex = index;
              console.log("tst")
-             gridView.model.get(index)
-               /*var data = gridView.model.get(gridView.currentIndex)*/
-               console.log(gridView.model[index].name)
+             gridView.model.get("毕节一中",index)
+               /*var data = gridView.model.get("02")*/
+                 console.log(gridView.model[index].name)
           }
         }
     }

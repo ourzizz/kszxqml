@@ -12,7 +12,8 @@ Item{
             currentIndex: 0
             model: ListModel {
                 id: cbItems
-                ListElement { text: "毕节小"; color: "Yellow" }
+                ListElement { text: "毕节一小"; color: "Yellow" }
+                ListElement { text: "毕节市实验学校"; color: "Yellow" }
                 ListElement { text: "毕节一中"; color: "Green" }
             }
             width: 162
@@ -24,20 +25,6 @@ Item{
                 if(currentIndex==1){
                      console.debug("1")
                 }
-            }
-        }
-        Button {
-            id:previewButton
-            x: 202
-            anchors {
-                top: parent.top
-                margins: 5
-            }
-            text: '预览-'
-            onClicked: {
-                if( printer.setup() )
-                    printer.print();
-        //        printer.saveImage("test.png", 'png', 100);
             }
         }
 
