@@ -81,7 +81,7 @@ Window{
 
         Component.onCompleted: {
             console.log( "Sizes: " );
-            //            var sz = printer.paperSizes;
+            //            var sz = printer.paperSizes;//testgit
             //            for( var x=0; x < sz.length; x++ )
             //                console.log(' - ' + sz[x]);
 
