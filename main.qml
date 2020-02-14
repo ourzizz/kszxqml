@@ -4,26 +4,11 @@ import QtQuick.Window 2.2
 import QtQuick.Layouts 1.3
 import an.qt.KSModel 1.0
 import an.qt.Printer 1.0
-
+import "logic.js" as LG
 Window{
     color:"#55aa7f"
     id:root;
     property var checklist: new Array
-    Component{
-        id:kaochangCheckBoxTemplate
-        CheckBox {//考场Item的checkBox
-            text: ""
-            onCheckedChanged: {
-//			    gridView.model.get("毕节一中",text)
-            }
-        }
-    }
-    KSDelegate{
-        id:ksdelegate
-    }
-    ToolBar{
-        anchors.top:parent.top
-    }
     ColumnLayout{
         width: root.width
         OPToolBar{
@@ -34,11 +19,15 @@ Window{
         RowLayout{
             GroupBox{
                 title: qsTr("请选择考场号")
-                ColumnLayout {
-                    id:kaochangGroupBox
+                ScrollView{
+                    height: 300
+                    ColumnLayout {
+                        id:kaochangGroupBox
+                    }
                 }
             }
             Column{
+                id:dibanPage
                 anchors.top:toolbar.bottom
                 anchors.horizontalCenter: parent.horizontalCenter;
                 height: parent.height
@@ -59,7 +48,7 @@ Window{
                         cellWidth:200;
                         cellHeight:120;
                         anchors.fill: parent;
-                        delegate: ksdelegate;
+                        delegate: KSDelegate{}
                         model: KaoshengListModel{}
                         highlight: highlight
                         highlightFollowsCurrentItem: true
@@ -100,5 +89,4 @@ Window{
             printer.setPageSize( 'Letter / ANSI A' );
         }
     }
-
 }

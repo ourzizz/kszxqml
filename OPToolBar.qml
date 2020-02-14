@@ -4,6 +4,34 @@ import QtQuick.Window 2.2
 import QtQuick.Layouts 1.3
 import "logic.js" as Logic
 Item{
+    Component{
+        id:checkBoxTemplate
+        CheckBox {//考场Item的checkBox
+            text: ""
+            property var schoolName:""
+            onCheckedChanged: {
+                console.debug(schoolName,text)
+                gridView.model.get(schoolName,text)
+            }
+        }
+    }
+    function createCheckItem(schoolName,kaochangCount){
+        var i = 0
+        for(i;i<kaochangCount;i++){
+            var text = i + 1
+            if(i<9){
+                text = "0" + text
+            }
+            checkBoxTemplate.createObject(kaochangGroupBox,{"schoolName":schoolName,"text":text})
+        }
+    }
+//    function destroyAllCheckBox(kaochangGroupBox){//gourpCheckbox
+    function destroyAllCheckBox(){//gourpCheckbox
+        var count = kaochangGroupBox.children.length;
+        for(var i = 0; i < count; i++){
+            kaochangGroupBox.children[i].destroy()
+        }
+    }
     width: parent.width
     Row{
         x: 8
@@ -13,13 +41,13 @@ Item{
             textRole: "key"
             anchors.left : groupbox.right
             model: ListModel {
-                ListElement { key: "毕节一小"; value: "30" }
-                ListElement { key: "毕节市实验学校"; value: "40" }
-                ListElement { key: "毕节一中"; value: "30" }
+                ListElement { key: "七星关区第二实验学校"; value: "68" }
+                ListElement { key: "毕节市实验学校"; value: "60" }
+                ListElement { key: "毕节一中"; value: "47" }
             }
             onCurrentIndexChanged:{
-//                Logic.destroyAllCheckBox()
-                Logic.createCheckItem(model.get(currentIndex).value)
+                destroyAllCheckBox()
+                createCheckItem(model.get(currentIndex).key,model.get(currentIndex).value)
             }
         }
 //	    ComboBox {

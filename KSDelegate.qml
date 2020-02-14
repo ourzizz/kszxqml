@@ -38,11 +38,8 @@ Component{
         }
         MouseArea {
               anchors.fill: parent
-              onClicked: {
-//                 onClicked: gridView.currentIndex = index;
+              onClicked: { //index是delegate的固有属性直接获取
                  console.log(index)
-                 gridView.model.get("毕节一中",index)//调用kaoshengModel的get刷新数据
-                 console.log(gridView.model[index].name)
           }
         }
     }
