@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>acy.jpg</file>
         <file>KSDelegate.qml</file>
         <file>OPToolBar.qml</file>
         <file>MainForm.ui.qml</file>

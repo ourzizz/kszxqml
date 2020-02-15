@@ -18,11 +18,11 @@ public:/*{{{*/
         m_db = new DataSource();
         int role = Qt::UserRole;
         m_roleNames.insert(role++, "name");
-        m_roleNames.insert(role++, "age");
+        m_roleNames.insert(role++, "sfzid");
         m_roleNames.insert(role++, "img");
-//        m_roleNames.insert(role++, "kemu");
-//        m_roleNames.insert(role++, "zuowei");
-//        m_roleNames.insert(role++, "zkzh");
+        m_roleNames.insert(role++, "kemu");
+        m_roleNames.insert(role++, "zkzh");
+        m_roleNames.insert(role++, "zuowei");
     }
 
     ~KaoshengDataPrivate()
@@ -31,16 +31,15 @@ public:/*{{{*/
     }
 
     void load(){//给出考点 考场两个参数 取数据库中对应的数据填充
-        char *element[] ={"车那还","nan","1233332123.png"};
-//        qDebug()<<"test"<<element[0];
-        KaoshengData *ksdata;
-        for(int i=0;i<25;i++){
-            ksdata = new KaoshengData();
-            ksdata->append(element[1]);
-            ksdata->append(QString::number(i));
-            ksdata->append("./acy.jpg");
-            m_Kaoshengs.append(ksdata);
-        }
+        //char *element[] ={"车那还","nan","1233332123.png"};
+        //KaoshengData *ksdata;
+        //for(int i=0;i<25;i++){
+            //ksdata = new KaoshengData();
+            //ksdata->append(element[1]);
+            //ksdata->append(QString::number(i));
+            //ksdata->append("./acy.jpg");
+            //m_Kaoshengs.append(ksdata);
+        //}
     }
 
     void reset()

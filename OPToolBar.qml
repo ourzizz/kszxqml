@@ -8,7 +8,7 @@ Item{
         id:checkBoxTemplate
         CheckBox {//考场Item的checkBox
             text: ""
-            property var schoolName:""
+            property string schoolName:""
             onCheckedChanged: {
                 console.debug(schoolName,text)
                 gridView.model.get(schoolName,text)
@@ -25,7 +25,6 @@ Item{
             checkBoxTemplate.createObject(kaochangGroupBox,{"schoolName":schoolName,"text":text})
         }
     }
-//    function destroyAllCheckBox(kaochangGroupBox){//gourpCheckbox
     function destroyAllCheckBox(){//gourpCheckbox
         var count = kaochangGroupBox.children.length;
         for(var i = 0; i < count; i++){
@@ -37,51 +36,47 @@ Item{
         x: 8
         y: 8
         ComboBox {//下拉列表
+            width:180;
             id:kaodianCombobox
             textRole: "key"
-            anchors.left : groupbox.right
             model: ListModel {
-                ListElement { key: "七星关区第二实验学校"; value: "68" }
+                ListElement { key: "七星关区第二实验学校"; value: "60" }
                 ListElement { key: "毕节市实验学校"; value: "60" }
                 ListElement { key: "毕节一中"; value: "47" }
             }
             onCurrentIndexChanged:{
+                root.schoolName = model.get(currentIndex).key
                 destroyAllCheckBox()
+                gridView.model.reload()
                 createCheckItem(model.get(currentIndex).key,model.get(currentIndex).value)
             }
         }
-//	    ComboBox {
-//		    id:combox
-//		    currentIndex: 0
-//		    model: ListModel {
-//			    id: cbItems
-//		    }
-//		    width: 162
-//		    onCurrentIndexChanged: {
-//			    if(currentIndex==0){
-//				    console.debug(cbItems.get(currentIndex).text + ", " + cbItems.get(currentIndex).color)
-//				    console.debug("0")
-//			    }
-//			    if(currentIndex==1){
-//				    console.debug("1")
-//			    }
-//		    }
-//	    }
 
         Button {
             id:printButton
             x: 249
+            /*y: 18*/
             width: 77
             anchors {
                 top: parent.top
-                margins: 5
             }
             text: '打印'
             onClicked: {
+                var str = new Array();
+                var index = 0;
+                var kaochangs = kaochangGroupBox
+                var count = kaochangs.children.length;
+                for(var i = 0; i < count; i++){
+                    if(kaochangs.children[i].checked){
+                        str.push(kaochangs.children[i].text)
+                        console.debug(str[i])
+                        index++;
+                    }    
+                }    
+                console.debug(str.length)
                 if( printer.setup() )
                     printer.print();
             }
         }
     }
 }
-

@@ -6,8 +6,8 @@
 DataSource::DataSource()
 {
     m_db=QSqlDatabase::addDatabase("QMYSQL");
-//    m_db.setHostName("127.0.0.1");      //连接数据库主机名，这里需要注意（若填的为”127.0.0.1“，出现不能连接，则改为localhost)
-    m_db.setHostName("192.168.1.107");      //连接数据库主机名，这里需要注意（若填的为”127.0.0.1“，出现不能连接，则改为localhost)
+    m_db.setHostName("127.0.0.1");      //连接数据库主机名，这里需要注意（若填的为”127.0.0.1“，出现不能连接，则改为localhost)
+//    m_db.setHostName("192.168.1.107");      //连接数据库主机名，这里需要注意（若填的为”127.0.0.1“，出现不能连接，则改为localhost)
     m_db.setPort(3306);                 //连接数据库端口号，与设置一致
     m_db.setDatabaseName("1909bishi");      //连接数据库名，与设置一致
     m_db.setUserName("root");          //数据库用户名，与设置一致
@@ -29,6 +29,8 @@ QVector<KaoshengData*>* DataSource::getDiban(QString kaodianName,QString kaochan
         element->append(query.value("kaosheng_name").toString());
         element->append(query.value("sfzid").toString());
         element->append(QString("file:///D:/data/ksphoto/") + query.value("kaosheng_name").toString() +query.value("sfzid").toString() + QString(".jpg"));
+        element->append(query.value("kemu").toString());
+        element->append(query.value("kaohao").toString());
         res->append(element);
     }
     return res;

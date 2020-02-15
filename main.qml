@@ -8,55 +8,64 @@ import "logic.js" as LG
 Window{
     color:"#55aa7f"
     id:root;
+    property string schoolName:"";
     property var checklist: new Array
     ColumnLayout{
         width: root.width
-        OPToolBar{
-            id:toolbar
-            width: root.width
-            anchors.top:parent.top
+        ToolBar{
+            width:50
+            OPToolBar{
+                id:toolbar
+                width: root.width
+                anchors.top:parent.top
+            }
         }
         RowLayout{
-            GroupBox{
-                title: qsTr("请选择考场号")
+            anchors.top:toolbar.Bottom
+            Rectangle{
+                id:leftBox
+                width: 120
+                height: 750
+                /*title: qsTr("请选择考场号")*/
                 ScrollView{
-                    height: 300
+                    width: 100
+                    height: root.height - toolbar.height -50
                     ColumnLayout {
                         id:kaochangGroupBox
                     }
                 }
             }
-            Column{
-                id:dibanPage
-                anchors.top:toolbar.bottom
-                anchors.horizontalCenter: parent.horizontalCenter;
-                height: parent.height
+            Rectangle{
+                id:dibanBox
+                anchors.top:leftBox.top
+                anchors.left:leftBox.right 
+                width: 1230;
+                height : 690;
+                border.width: 1
+                color:qsTr("white")
                 Text{
                     id:title
                     fontSizeMode: Text.Fit; minimumPixelSize: 10; font.pixelSize: 32
                     anchors.horizontalCenter: parent.horizontalCenter;
                     /*anchors.top : parent*/
-                    text:"**考试**学校底板打印"
+                    text:root.schoolName + "学校" + "**考场座次表"
                 }
-                Item{
-                    width: 1230;
-                    height : 600;
-                    GridView{
-                        id:gridView;
-                        verticalLayoutDirection : GridView.BottomToTop
-                        layoutDirection: Qt.RightToLeft
-                        cellWidth:200;
-                        cellHeight:120;
-                        anchors.fill: parent;
-                        delegate: KSDelegate{}
-                        model: KaoshengListModel{}
-                        highlight: highlight
-                        highlightFollowsCurrentItem: true
-                        focus: true
-                    }
-                    Component.onCompleted:{
-                        root.showMaximized()
-                    }
+                GridView{
+                    id:gridView;
+                    anchors.top:title.bottom
+                    verticalLayoutDirection : GridView.BottomToTop
+                    layoutDirection: Qt.RightToLeft
+                    cellWidth:200;
+                    cellHeight:130;
+                    anchors.fill: parent;
+                    delegate: KSDelegate{}
+                    model: KaoshengListModel{}
+                    highlight: highlight
+                    highlightFollowsCurrentItem: true
+                    focus: true
+                }
+                Component.onCompleted:{
+                    root.showMaximized()
                 }
             }
         }
