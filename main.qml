@@ -9,6 +9,7 @@ Window{
     color:"#55aa7f"
     id:root;
     property string schoolName:"";
+    property string kaochangId:"";
     property var checklist: new Array
     ColumnLayout{
         width: root.width
@@ -20,17 +21,17 @@ Window{
                 anchors.top:parent.top
             }
         }
-        ColumnLayout{
+        RowLayout{
             width:Layout.fillWidth
-            Layout.alignment: Qt.AlignCenter
-            anchors.top:toolbar.Bottom
+            x:0
+            Layout.alignment: Qt.AlignLeft
+            spacing: 10
             Rectangle{
                 id:leftBox
-                x:10
                 y:40
                 width: 120
-                anchors.top:toolbar.Bottom
-                height: dibanBox.height
+                anchors.top:dibanBox.top
+                height: root.height - toolbar.height - 100
                 ScrollView{
                     width: 100
                     height: parent.height
@@ -41,8 +42,6 @@ Window{
             }
             Rectangle{
                 id:dibanBox
-                anchors.top:leftBox.top
-                anchors.left:leftBox.right 
                 width: 1230;
                 height : 690;
                 border.width: 1
@@ -52,11 +51,12 @@ Window{
                     fontSizeMode: Text.Fit; minimumPixelSize: 10; font.pixelSize: 32
                     anchors.horizontalCenter: parent.horizontalCenter;
                     /*anchors.top : parent*/
-                    text:root.schoolName + "学校" + "**考场座次表"
+                    text:root.schoolName + "学校第" + root.kaochangId + "考场座次表"
                 }
                 GridView{
                     id:gridView;
                     anchors.top:title.bottom
+                    anchors.horizontalCenter: parent.horizontalCenter
                     verticalLayoutDirection : GridView.BottomToTop
                     layoutDirection: Qt.RightToLeft
                     cellWidth:200;

@@ -10,7 +10,7 @@ Item{
             text: ""
             property string schoolName:""
             onCheckedChanged: {
-                console.debug(schoolName,text)
+                root.kaochangId = text
                 gridView.model.get(schoolName,text)
             }
         }
