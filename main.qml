@@ -20,16 +20,20 @@ Window{
                 anchors.top:parent.top
             }
         }
-        RowLayout{
+        ColumnLayout{
+            width:Layout.fillWidth
+            Layout.alignment: Qt.AlignCenter
             anchors.top:toolbar.Bottom
             Rectangle{
                 id:leftBox
+                x:10
+                y:40
                 width: 120
-                height: 750
-                /*title: qsTr("请选择考场号")*/
+                anchors.top:toolbar.Bottom
+                height: dibanBox.height
                 ScrollView{
                     width: 100
-                    height: root.height - toolbar.height -50
+                    height: parent.height
                     ColumnLayout {
                         id:kaochangGroupBox
                     }
