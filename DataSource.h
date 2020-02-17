@@ -3,6 +3,7 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlError>
+#include <QString>
 typedef QVector<QString> KaoshengData;
 class DataSource
 {
@@ -13,5 +14,6 @@ public:
     ~DataSource();
 //    QVector<QString> GetAllDbName();
     QVector<KaoshengData*>* getDiban(QString kaodianName,QString kaochangId) ;
+    QString getFirstLetter(QString strName);
 };
 #endif // DATASOURCE_H

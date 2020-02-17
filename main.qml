@@ -76,7 +76,7 @@ Window{
     }
     Printer {
         id: printer
-        item: gridView
+        item: dibanBox
         antialias: false
         property int page: 1
         onPrintComplete: {
